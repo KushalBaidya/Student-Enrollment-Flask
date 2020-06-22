@@ -1,0 +1,42 @@
+<header>
+	<h1 style="text-align:center;margin-bottom: 0px" class="container-fluid text-white bg-dark">Annunaki</h1>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#"><img src="{{ url_for('static',filename='images/image.jpg')}}" width="30" height="30" alt="Phoneix logo"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item {% if index %}active{% endif %}">
+              <a class="nav-link" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item {% if courses %}active{% endif %}">
+              <a class="nav-link" href="{{ url_for('courses') }}">Classes</a>
+            </li>
+            {% if not session['username'] %}
+            <li class="nav-item {% if register %}active{% endif %}">
+              <a class="nav-link" href="{{ url_for('register') }}">Register</a>
+            </li>
+            {% endif %}
+            <li class="nav-item {% if enrollment %}active{% endif %}">
+              <a class="nav-link" href="{{ url_for('enrollment') }}">Enrollment</a>
+            </li>
+            {% if not session['username'] %}
+            <li class="nav-item {% if login %}active{% endif %}">
+              <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+            </li>
+            {% else %}
+            <li class="nav-item ">
+              <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+            </li>
+            {% endif %}
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+        
+    </nav>
+    </header>
